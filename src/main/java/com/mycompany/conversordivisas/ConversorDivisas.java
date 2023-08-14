@@ -15,7 +15,8 @@ public class ConversorDivisas {
 
     public static void main(String[] args) throws IOException {
         ApiCall call = new ApiCall();
-        call.ontenerArrayListDeDivisas();
+        System.out.println("HOLA");
+        call.obtenerArrayListDeDivisas();
         System.out.println(call.convertirDivisa("USD", "PEN",1));
     }
 }

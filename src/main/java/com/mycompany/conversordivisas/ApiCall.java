@@ -26,23 +26,22 @@ public class ApiCall {
             "  \"terms_of_use\": \"https://www.exchangerate-api.com/terms\",\n" +
             "  \"supported_codes\": [\n" +
             "    [\n" +
-            "      \"AED\",\n" +
-            "      \"UAE Dirham\"\n" +
+            "      \"PEN\",\n" +
+            "      \"Peruvian Sol\"\n" +
             "    ],\n" +
             "    [\n" +
-            "      \"AFN\",\n" +
-            "      \"Afghan Afghani\"\n" +
+            "      \"USD\",\n" +
+            "      \"United States Dollar\"\n" +
             "    ],\n" +
             "    [\n" +
-            "      \"ALL\",\n" +
-            "      \"Albanian Lek\"\n" +
+            "      \"EUR\",\n" +
+            "      \"EURO\"\n" +
             "    ]\n" +
             "  ]\n" +
             "}";
 
-    ArrayList<String> arrayCodes = new ArrayList<>();
-
-    public void ontenerArrayListDeDivisas() throws IOException {
+    public ArrayList<String> obtenerArrayListDeDivisas() throws IOException {
+        ArrayList<String> arrayCodes = new ArrayList<>();
         DivisasCodeResponse respuestaApi = new DivisasCodeResponse();
 
         /* QUITAR CUANDO SE REALICE LA PRUEBA FINAL
@@ -57,7 +56,8 @@ public class ApiCall {
                 .map(codes -> codes.get(0))
                 .forEach(arrayCodes::add);
 
-        System.out.println(arrayCodes);
+        System.out.println(arrayCodes);       
+        return arrayCodes;
     }
 
     public <T> T mappingResponse(Class<T> response, String stringResponse) throws JsonProcessingException {
