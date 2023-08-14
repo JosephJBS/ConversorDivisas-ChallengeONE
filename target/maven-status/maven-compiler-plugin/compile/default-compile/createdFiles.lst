@@ -1,4 +1,4 @@
 com\mycompany\conversordivisas\Responses\DivisasCodeResponse.class
+com\mycompany\conversordivisas\Responses\ConvertionResultResponse.class
 com\mycompany\conversordivisas\ConversorDivisas.class
 com\mycompany\conversordivisas\ApiCall.class
-com\mycompany\conversordivisas\Responses\ConvertionResultResponse.class
