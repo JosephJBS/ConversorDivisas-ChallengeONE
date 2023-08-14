@@ -5,37 +5,44 @@
 package com.mycompany.conversordivisas.Vistas;
 
 import com.mycompany.conversordivisas.ApiCall;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author josep
  */
 public class Vista_ConversorDivisa extends javax.swing.JFrame {
-    
-    ApiCall apiConsulta= new ApiCall();
+
+    ApiCall apiConsulta = new ApiCall();
     ArrayList<String> arrayCodes = new ArrayList<>();
-   
-     
+
     public Vista_ConversorDivisa() {
         initComponents();
+        customJFrameElements();
         llenarComboBoxConCodigosDivisas();
     }
-    
-    public void llenarComboBoxConCodigosDivisas(){
-        try{
+
+    public void llenarComboBoxConCodigosDivisas() {
+        try {
             arrayCodes = apiConsulta.obtenerArrayListDeDivisas();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
-        
-        System.out.println("aca: "+ arrayCodes);
-        for (String codes : arrayCodes){
+
+        for (String codes : arrayCodes) {
             divisaActualCB.addItem(codes);
             divisaConvertirCB.addItem(codes);
         }
     }
 
+    public void customJFrameElements() {
+        //Jform
+        setLocationRelativeTo(null);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,8 +54,8 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
         convertirBTT = new javax.swing.JButton();
         divisaActualCB = new javax.swing.JComboBox<>();
         divisaConvertirCB = new javax.swing.JComboBox<>();
-        montoConvertirTF = new javax.swing.JTextField();
         montoConvertidoTF = new javax.swing.JTextField();
+        montoConvertirTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,49 +72,53 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
             }
         });
 
-        montoConvertirTF.setText("5.4841");
-
         montoConvertidoTF.setEditable(false);
         montoConvertidoTF.setText("monto");
+
+        montoConvertirTF.setText("0.51");
+        montoConvertirTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                montoConvertirTFKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout conversorPanelLayout = new javax.swing.GroupLayout(conversorPanel);
         conversorPanel.setLayout(conversorPanelLayout);
         conversorPanelLayout.setHorizontalGroup(
             conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conversorPanelLayout.createSequentialGroup()
-                .addGap(0, 186, Short.MAX_VALUE)
-                .addComponent(tituloLabel)
-                .addGap(185, 185, 185))
             .addGroup(conversorPanelLayout.createSequentialGroup()
                 .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(conversorPanelLayout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
                     .addGroup(conversorPanelLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(divisaConvertirCB, 0, 71, Short.MAX_VALUE)
                             .addComponent(divisaActualCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(94, 94, 94)
-                        .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(montoConvertirTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(montoConvertidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(montoConvertidoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(montoConvertirTF)))
                     .addGroup(conversorPanelLayout.createSequentialGroup()
                         .addGap(201, 201, 201)
-                        .addComponent(convertirBTT)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(convertirBTT))
+                    .addGroup(conversorPanelLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tituloLabel)
+                            .addComponent(jLabel1))))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         conversorPanelLayout.setVerticalGroup(
             conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(conversorPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(tituloLabel)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(88, 88, 88)
                 .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(divisaActualCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(montoConvertirTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(divisaConvertirCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(montoConvertidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,12 +141,36 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void convertirBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertirBTTActionPerformed
-        String uwu = "";
-        uwu = montoConvertirTF.getText();
-        System.out.println(uwu);
-    }//GEN-LAST:event_convertirBTTActionPerformed
+    private void montoConvertirTFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montoConvertirTFKeyTyped
+        char caracter = evt.getKeyChar();
 
+        if ((caracter < '0' || caracter > '9')
+            && (caracter != KeyEvent.VK_BACK_SPACE)
+            && (caracter != '.' || montoConvertirTF.getText().contains("."))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_montoConvertirTFKeyTyped
+
+    private void convertirBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertirBTTActionPerformed
+        String montoConvertido= "";
+        String divisaActual = " " ;
+        String divisaFinal = " ";
+        double monto = 0; 
+        
+        monto = Double.parseDouble(montoConvertirTF.getText()); 
+        divisaActual = (String) divisaActualCB.getSelectedItem();
+        divisaFinal = (String) divisaConvertirCB.getSelectedItem();
+        
+        try {
+            montoConvertido = Double
+                    .toString(apiConsulta.convertirDivisa(divisaActual, divisaFinal, monto)) ;
+        } catch (IOException ex) {
+            Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        montoConvertidoTF.setText(montoConvertido);
+    }//GEN-LAST:event_convertirBTTActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
