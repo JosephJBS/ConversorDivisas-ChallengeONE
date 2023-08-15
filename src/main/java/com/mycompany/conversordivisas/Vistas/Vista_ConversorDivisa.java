@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,15 +91,6 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
             .addGroup(conversorPanelLayout.createSequentialGroup()
                 .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(conversorPanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(divisaConvertirCB, 0, 71, Short.MAX_VALUE)
-                            .addComponent(divisaActualCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(94, 94, 94)
-                        .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(montoConvertidoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(montoConvertirTF)))
-                    .addGroup(conversorPanelLayout.createSequentialGroup()
                         .addGap(201, 201, 201)
                         .addComponent(convertirBTT))
                     .addGroup(conversorPanelLayout.createSequentialGroup()
@@ -105,7 +98,17 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
                         .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tituloLabel)
                             .addComponent(jLabel1))))
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
+            .addGroup(conversorPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(divisaConvertirCB, 0, 71, Short.MAX_VALUE)
+                    .addComponent(divisaActualCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(94, 94, 94)
+                .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(montoConvertidoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(montoConvertirTF))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         conversorPanelLayout.setVerticalGroup(
             conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,32 +148,89 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
         char caracter = evt.getKeyChar();
 
         if ((caracter < '0' || caracter > '9')
-            && (caracter != KeyEvent.VK_BACK_SPACE)
-            && (caracter != '.' || montoConvertirTF.getText().contains("."))) {
+                && (caracter != KeyEvent.VK_BACK_SPACE)
+                && (caracter != '.' || montoConvertirTF.getText().contains("."))) {
             evt.consume();
         }
     }//GEN-LAST:event_montoConvertirTFKeyTyped
 
     private void convertirBTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertirBTTActionPerformed
-        String montoConvertido= "";
-        String divisaActual = " " ;
+        String montoConvertido = " ";
+        String divisaActual = " ";
         String divisaFinal = " ";
-        double monto = 0; 
-        
-        monto = Double.parseDouble(montoConvertirTF.getText()); 
+        double monto = 0;
+
         divisaActual = (String) divisaActualCB.getSelectedItem();
         divisaFinal = (String) divisaConvertirCB.getSelectedItem();
+
+        //VALIDACIONES
+        if (!validarJTexFieldConValorIngresado())return;
+        if (!validarDiferentesDivisas(divisaActual, divisaFinal)) return;
+        if (!validarMontoTipoDoubleYPositivo()) return;
+        
+        monto = Double.parseDouble(montoConvertirTF.getText());
         
         try {
-            montoConvertido = Double
-                    .toString(apiConsulta.convertirDivisa(divisaActual, divisaFinal, monto)) ;
+            montoConvertido = Double.toString(apiConsulta.convertirDivisa(divisaActual, divisaFinal, monto));
+            System.out.println("monto converitdo: " + montoConvertido);
         } catch (IOException ex) {
             Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         montoConvertidoTF.setText(montoConvertido);
     }//GEN-LAST:event_convertirBTTActionPerformed
+
+    public boolean validarJTexFieldConValorIngresado(){
+        System.out.println("Se valida valor ingresado por interfaz grafica");
+        if(montoConvertirTF.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane,
+                    "¡Ingrese un valor!",
+                    "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validarDiferentesDivisas(String divisaActual, String divisaFinal) {
+        System.out.println("Se validan divisas diferentes");
+        if (divisaActual.equals(divisaFinal)) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "¡Las divisas deben ser diferentes!",
+                    "Info",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarMontoTipoDoubleYPositivo() {
+        double monto;
+        System.out.println("Se valida que se digite un número");
+        try {
+            monto = Double.parseDouble(montoConvertirTF.getText());
+            validarMontoPositivo(monto);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane,
+                    "¡Debe ingresar solo valores numéricos!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public void validarMontoPositivo(double monto) {
+        System.out.println("Se valida que el monto ingresado sea positivo");
+        if (monto <= 0) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "¡Ingrese valores positivos!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
