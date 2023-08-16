@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="conversorPanel" max="32767" attributes="0"/>
+          <Component id="conversorPanel" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -43,40 +43,30 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="footerLB" min="-2" pref="685" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="divisaConvertirCB" max="32767" attributes="0"/>
-                                  <Component id="divisaActualCB" min="-2" pref="131" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="montoConvertirTF" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Component id="montoConvertidoTF" min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="convertirBTT" min="-2" pref="96" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="aluraImgLB" min="-2" pref="215" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="convTemperatura" min="-2" pref="161" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="tempFinalCB" max="32767" attributes="0"/>
+                      <Component id="tempActualCB" min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="tempConvertirTF" max="32767" attributes="0"/>
+                      <Component id="tempCalculadaTF" pref="163" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="convertirBTT" min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="aluraImgLB" min="-2" pref="215" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="convDivisas" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="tituloLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Component id="footerLB" alignment="0" min="-2" pref="685" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -89,25 +79,24 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="convTemperatura" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="convDivisas" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="tituloLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="divisaActualCB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="montoConvertirTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tempActualCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tempConvertirTF" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="convertirBTT" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="divisaConvertirCB" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="montoConvertidoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tempFinalCB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tempCalculadaTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace pref="55" max="32767" attributes="0"/>
                   <Component id="footerLB" min="-2" pref="195" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -119,12 +108,12 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="36" style="3"/>
+              <Font name="Comic Sans MS" size="32" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Conversor de Divisas"/>
+            <Property name="text" type="java.lang.String" value="Conversor de Temperatura"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="convertirBTT">
@@ -135,7 +124,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="convertirBTTActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="divisaActualCB">
+        <Component class="javax.swing.JComboBox" name="tempActualCB">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
@@ -145,7 +134,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="divisaConvertirCB">
+        <Component class="javax.swing.JComboBox" name="tempFinalCB">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
@@ -155,18 +144,18 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="montoConvertidoTF">
+        <Component class="javax.swing.JTextField" name="tempCalculadaTF">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="monto"/>
+            <Property name="text" type="java.lang.String" value="temperatura"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="montoConvertirTF">
+        <Component class="javax.swing.JTextField" name="tempConvertirTF">
           <Properties>
             <Property name="text" type="java.lang.String" value="0.51"/>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="montoConvertirTFKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tempConvertirTFKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="aluraImgLB">
@@ -175,6 +164,9 @@
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+ &quot;\\src\\main\\java\\assets\\Alura.png&quot;)" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="aluraImgLBMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="getContentPane().add(aluraImgLB);&#xa;aluraImgLB.setBounds(0,0,250,200);"/>
           </AuxValues>
@@ -191,13 +183,16 @@
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+ &quot;\\src\\main\\java\\assets\\footer.png&quot;)" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLBMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="convTemperatura">
+        <Component class="javax.swing.JButton" name="convDivisas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Conversor Temperatura"/>
+            <Property name="text" type="java.lang.String" value="Conversor Divisas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="convTemperaturaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="convDivisasActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

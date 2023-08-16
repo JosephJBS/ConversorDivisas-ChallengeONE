@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.*;
-
 import com.mycompany.conversordivisas.Responses.ConvertionResultResponse;
 import com.mycompany.conversordivisas.Responses.DivisasCodeResponse;
 /**
@@ -44,16 +43,15 @@ public class ApiCall {
         ArrayList<String> arrayCodes = new ArrayList<>();
         DivisasCodeResponse respuestaApi = new DivisasCodeResponse();
 
-        /* QUITAR CUANDO SE REALICE LA PRUEBA FINAL
         String urlConsulta = urlBase + "/codes";
         String responseString = callAPI(urlConsulta);
-        respuestaApi = mappingResponse(DivisasCodeResponse.class,responseString);*/
+        respuestaApi = mappingResponse(DivisasCodeResponse.class,responseString);
 
-        respuestaApi = mappingResponse(DivisasCodeResponse.class,pruebaJson);
+        //respuestaApi = mappingResponse(DivisasCodeResponse.class,pruebaJson);
 
         //Se agregan los codigos a la variable ArrayCodes
         respuestaApi.supported_codes.stream()
-                .map(codes -> codes.get(0))
+                .map(codes -> codes.get(0) +" : "+codes.get(1))
                 .forEach(arrayCodes::add);
 
         System.out.println(arrayCodes);       

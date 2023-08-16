@@ -53,10 +53,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="divisaActualCB" pref="217" max="32767" attributes="0"/>
                                   <Component id="divisaConvertirCB" max="32767" attributes="0"/>
-                                  <Component id="divisaActualCB" min="-2" pref="131" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="montoConvertirTF" min="-2" pref="120" max="-2" attributes="0"/>
                                   <Component id="montoConvertidoTF" min="-2" pref="120" max="-2" attributes="0"/>
@@ -175,6 +175,9 @@
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+ &quot;\\src\\main\\java\\assets\\Alura.png&quot;)" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="aluraImgLBMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="getContentPane().add(aluraImgLB);&#xa;aluraImgLB.setBounds(0,0,250,200);"/>
           </AuxValues>
@@ -191,6 +194,9 @@
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+ &quot;\\src\\main\\java\\assets\\footer.png&quot;)" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="footerLBMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="convTemperatura">
           <Properties>

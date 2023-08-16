@@ -5,14 +5,15 @@
 package com.mycompany.conversordivisas.Vistas;
 
 import com.mycompany.conversordivisas.ApiCall;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Desktop;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,6 +47,7 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
     public void customJFrameElements() {
         //Jform
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -92,10 +94,20 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
         aluraImgLB.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+ "\\src\\main\\java\\assets\\Alura.png"));
         getContentPane().add(aluraImgLB);
         aluraImgLB.setBounds(0,0,250,200);
+        aluraImgLB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aluraImgLBMouseClicked(evt);
+            }
+        });
 
         footerLB.setBackground(new java.awt.Color(0, 153, 255));
         footerLB.setForeground(new java.awt.Color(153, 153, 255));
         footerLB.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+ "\\src\\main\\java\\assets\\footer.png"));
+        footerLB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                footerLBMouseClicked(evt);
+            }
+        });
 
         convTemperatura.setText("Conversor Temperatura");
         convTemperatura.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +129,9 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, conversorPanelLayout.createSequentialGroup()
                             .addGap(44, 44, 44)
                             .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(divisaConvertirCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(divisaActualCB, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(120, 120, 120)
+                                .addComponent(divisaActualCB, 0, 217, Short.MAX_VALUE)
+                                .addComponent(divisaConvertirCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(34, 34, 34)
                             .addGroup(conversorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(montoConvertirTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(montoConvertidoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,19 +202,13 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
         String divisaFinal = " ";
         double monto = 0;
 
-        divisaActual = (String) divisaActualCB.getSelectedItem();
-        divisaFinal = (String) divisaConvertirCB.getSelectedItem();
-
+        divisaActual = ((String) divisaActualCB.getSelectedItem()).substring(0, 3);
+        divisaFinal = ((String) divisaConvertirCB.getSelectedItem()).substring(0, 3);
+        
         //VALIDACIONES
-        if (!validarJTexFieldConValorIngresado()) {
-            return;
-        }
-        if (!validarDiferentesDivisas(divisaActual, divisaFinal)) {
-            return;
-        }
-        if (!validarMontoTipoDoubleYPositivo()) {
-            return;
-        }
+        if (!validarJTexFieldConValorIngresado()) return;
+        if (!validarDiferentesDivisas(divisaActual, divisaFinal)) return;
+        if (!validarMontoTipoDoubleYPositivo()) return;
 
         monto = Double.parseDouble(montoConvertirTF.getText());
 
@@ -217,8 +223,28 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
     }//GEN-LAST:event_convertirBTTActionPerformed
 
     private void convTemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convTemperaturaActionPerformed
-        // TODO add your handling code here:
+        Vista_ConversorTemperatura convTempFrame = new  Vista_ConversorTemperatura();
+        dispose();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        convTempFrame.setVisible(true);
     }//GEN-LAST:event_convTemperaturaActionPerformed
+
+    private void footerLBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_footerLBMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.linkedin.com/in/joseph-jbs"));
+            Desktop.getDesktop().browse(new URI("https://github.com/JosephJBS"));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_footerLBMouseClicked
+
+    private void aluraImgLBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aluraImgLBMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.oracle.com/ar/education/oracle-next-education/"));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_aluraImgLBMouseClicked
 
     public boolean validarJTexFieldConValorIngresado() {
         System.out.println("Se valida valor ingresado por interfaz grafica");
