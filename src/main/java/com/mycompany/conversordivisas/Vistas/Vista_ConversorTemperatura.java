@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author josep
  */
-public class Vista_ConversorDivisa extends javax.swing.JFrame {
+public class Vista_ConversorTemperatura extends javax.swing.JFrame {
 
     ApiCall apiConsulta = new ApiCall();
     ArrayList<String> arrayCodes = new ArrayList<>();
 
-    public Vista_ConversorDivisa() {
+    public Vista_ConversorTemperatura() {
         initComponents();
         customJFrameElements();
         llenarComboBoxConCodigosDivisas();
@@ -210,7 +210,7 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
             montoConvertido = Double.toString(apiConsulta.convertirDivisa(divisaActual, divisaFinal, monto));
             System.out.println("monto converitdo: " + montoConvertido);
         } catch (IOException ex) {
-            Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Vista_ConversorTemperatura.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         montoConvertidoTF.setText(montoConvertido);
@@ -286,20 +286,21 @@ public class Vista_ConversorDivisa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista_ConversorTemperatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista_ConversorTemperatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista_ConversorTemperatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista_ConversorDivisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vista_ConversorTemperatura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vista_ConversorDivisa().setVisible(true);
+                new Vista_ConversorTemperatura().setVisible(true);
             }
         });
     }
